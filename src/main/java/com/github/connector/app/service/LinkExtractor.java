@@ -4,7 +4,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
-import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -18,12 +17,12 @@ public class LinkExtractor {
 
         var linksArray = new String[]{};
 
-        String linkHeader = headers.getFirst("Link");
+        var linkHeader = headers.getFirst("Link");
         if(linkHeader != null) {
             linksArray = linkHeader.split(", ");
         }
 
-        Map<String, String> linkMap = Arrays.stream(linksArray)
+        var linkMap = Arrays.stream(linksArray)
                 .map(link -> link.split("; "))
                 .collect(Collectors.toMap(
                         link -> link[1].substring(5, link[1].length() - 1),

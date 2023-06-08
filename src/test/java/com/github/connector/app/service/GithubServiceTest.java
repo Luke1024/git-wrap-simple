@@ -47,8 +47,8 @@ class GithubServiceTest {
                 .build());
 
 
-        String userName = "testUser";
-        String token = "token";
+        var userName = "testUser";
+        var token = "token";
 
         RepositoryWrapper repoWrapper = new RepositoryWrapper(
                 "Repo",
@@ -56,7 +56,7 @@ class GithubServiceTest {
                 false,
                 "");
 
-        BranchWrapper branchWrapper = new BranchWrapper("Branch",new CommitWrapper());
+        var branchWrapper = new BranchWrapper("Branch",new CommitWrapper());
 
         when(githubClient.fetchAll(anyString(), eq(RepositoryWrapper.class), any(Optional.class)))
                 .thenReturn(Flux.just(repoWrapper));

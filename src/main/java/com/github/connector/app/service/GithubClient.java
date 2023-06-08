@@ -25,13 +25,13 @@ public class GithubClient {
     }
 
     public <T> Flux<T> fetchAll(String uri, Class<T> responseClass, Optional<String> tokenOptional) {
-        WebClient.RequestHeadersSpec<?> spec = webClient.get().uri(uri);
+        var spec = webClient.get().uri(uri);
         tokenOptional.ifPresent(s -> spec.header("Authorization", "Bearer " + s));
         return spec.exchangeToFlux(
                 clientResponse -> {
                     if (clientResponse.statusCode().equals(HttpStatus.OK)) {
-                        Flux<T> dataFlux = clientResponse.bodyToFlux(responseClass);
-                        Optional<String> link = linkExtractor.extractLinks(clientResponse.headers().asHttpHeaders());
+                        var dataFlux = clientResponse.bodyToFlux(responseClass);
+                        var link = linkExtractor.extractLinks(clientResponse.headers().asHttpHeaders());
                         if (link.isPresent()) {
                             log.info("Used pagination. " + link.get());
                             return dataFlux.concatWith(fetchAll(link.get(), responseClass, tokenOptional));

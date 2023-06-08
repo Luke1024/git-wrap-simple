@@ -31,7 +31,7 @@ public class GithubService {
     }
 
     public Flux<Repository> getRepos(String userName, ServerWebExchange serverWebExchange){
-        Optional<String> tokenOptional = extractGitToken(serverWebExchange);
+        var tokenOptional = extractGitToken(serverWebExchange);
 
         return collectRepos(userName, tokenOptional)
                 .onErrorResume(Flux::error)
@@ -58,12 +58,12 @@ public class GithubService {
     }
 
     private Optional<String> extractGitToken(ServerWebExchange serverWebExchange){
-        HttpHeaders headers = serverWebExchange.getRequest().getHeaders();
-        List<String> tokens = headers.get(GIT_TOKEN_KEY);
+        var headers = serverWebExchange.getRequest().getHeaders();
+        var tokens = headers.get(GIT_TOKEN_KEY);
 
         if(tokens != null){
             if(!tokens.isEmpty()) {
-                String token = tokens.get(0);
+                var token = tokens.get(0);
                 log.info("Used github token: " + token);
                 return Optional.of(token);
             }

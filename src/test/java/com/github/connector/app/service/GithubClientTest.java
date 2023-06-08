@@ -35,8 +35,8 @@ public class GithubClientTest {
 
     @Test
     public void basicTest() {
-        String uri = "";
-        ClientResponse clientResponse = ClientResponse.create(HttpStatus.OK).
+        var uri = "";
+        var clientResponse = ClientResponse.create(HttpStatus.OK).
                 header("", "").build();
         when(webClient.get()).thenReturn(requestHeadersUriSpec);
         when(requestHeadersUriSpec.uri(any(String.class))).thenReturn(requestHeadersSpec);
