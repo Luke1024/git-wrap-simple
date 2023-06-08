@@ -1,16 +1,16 @@
-package com.github.connector.app.model;
+package com.github.connector.app.dto;
 
 import java.util.List;
 
-public class Repo {
+public class RepositoryDto {
     private String repoName;
     private String ownerLogin;
-    private List<Branch> branches;
+    private List<BranchDto> branchDtos;
 
-    public Repo(String repoName, String ownerLogin, List<Branch> branches) {
+    public RepositoryDto(String repoName, String ownerLogin, List<BranchDto> branchDtos) {
         this.repoName = repoName;
         this.ownerLogin = ownerLogin;
-        this.branches = branches;
+        this.branchDtos = branchDtos;
     }
 
     public String getRepoName() {
@@ -21,7 +21,7 @@ public class Repo {
         return ownerLogin;
     }
 
-    public List<Branch> getBranches() {
-        return branches;
+    public List<BranchDto> getBranchDtos() {
+        return branchDtos;
     }
 }

@@ -2,21 +2,21 @@ package com.github.connector.app.dto;
 
 public class BranchDto {
     private String name;
-    private CommitDto commit;
+    private String lastCommitSHA;
 
     public BranchDto() {
     }
 
-    public BranchDto(String name, CommitDto commit) {
+    public BranchDto(String name, String lastCommitSHA) {
         this.name = name;
-        this.commit = commit;
+        this.lastCommitSHA = lastCommitSHA;
     }
 
     public String getName() {
         return name;
     }
 
-    public CommitDto getCommit() {
-        return commit;
+    public String getLastCommitSHA() {
+        return lastCommitSHA;
     }
 }

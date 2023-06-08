@@ -4,13 +4,13 @@ Github Connector App is a Spring Boot application that serves as an API wrapper 
 
 ## Endpoints
 
-    GET /user/repos/{username}: Fetches all the repositories and their branches for the given GitHub username. The header of the request must be "Accept: application/json".
+    GET /user/repositories/{username}: Fetches all the repositories and their branches for the given GitHub username. The header of the request must be "Accept: application/json".
 
-You can test the application by making a GET request to the /user/repos/{username} endpoint. Replace {username} with a valid Github username.
+You can test the application by making a GET request to the /user/repositories/{username} endpoint. Replace {username} with a valid Github username.
 
 For example:
 
-    curl -H "Accept: application/json" http://localhost:8080/user/repos/{username}
+    curl -H "Accept: application/json" http://localhost:8080/user/repositories/{username}
 
 
 ## Building and Running the Application
